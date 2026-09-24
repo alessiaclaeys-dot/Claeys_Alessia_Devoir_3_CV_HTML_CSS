@@ -1,0 +1,247 @@
+/* ===== Police Raleway (Google Fonts) importée via @font-face =====
+   Fichiers à placer dans le dossier assets/fonts/ (à côté de style.css) */
+@font-face {
+  font-family: "Raleway";
+  src: url("assets/fonts/Raleway-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("assets/fonts/Raleway-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("assets/fonts/Raleway-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ===== Variables & base ===== */
+:root {
+  --turquoise: #17a9b3;
+  --gris-fond: #eef2f3;
+  --texte: #222;
+  --texte-doux: #555;
+}
+
+/* box-sizing: border-box → padding et bordures sont COMPRIS dans width/height.
+   margin: 0 → aucune marge externe ne s'ajoute à la taille des blocs. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: 13px;
+  color: var(--texte);
+  background: #f4f4f4;
+}
+
+ul { list-style: none; }
+
+h1, h2, h3, h4, h5, h6 { font-family: "Lato", Arial, sans-serif; }
+
+/* Conteneur principal : colonne flex (en-tête / corps / pied) */
+.cv {
+  display: flex;
+  flex-direction: column;
+  width: 1160px;             /* largeur totale, paddings inclus */
+  max-width: 100%;           /* évite le débordement sur petit écran */
+  min-height: 100vh;
+  margin: 0 auto;            /* centre la page sans rien ajouter à sa largeur */
+  background: #fff;
+}
+
+/* ===== EN-TÊTE ===== */
+.cv-header {
+  display: flex;
+  justify-content: center;   /* centre le groupe photo + texte */
+  align-items: center;       /* aligne verticalement */
+  gap: 40px;
+  padding: 20px;
+  background: var(--turquoise);
+  color: #fff;
+}
+
+.photo {
+  flex-shrink: 0;            /* la photo ne s'écrase jamais */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  object-fit: cover;
+  background: #cfe9eb;
+}
+
+.identite { text-align: center; }
+
+.identite h1 { font-size: 36px; font-weight: 700; }
+
+.metier {
+  margin-top: 4px;
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Contacts : liste flex qui passe à la ligne → 2 colonnes */
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 30px;
+  max-width: 260px;
+  margin: 12px auto 0;
+  font-size: 11px;
+}
+
+.contacts li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 calc(50% - 15px);  /* 2 éléments par ligne */
+}
+
+.contacts i {
+  display: flex;             /* supprime le décalage vertical de la police d'icônes */
+  font-size: 12px;
+}
+
+/* ===== CORPS ===== */
+.cv-body {
+  display: flex;             /* sidebar + contenu côte à côte */
+  flex: 1;                   /* prend la hauteur restante entre header et footer */
+}
+
+.sidebar {
+  flex: 0 0 26%;             /* largeur fixe en % : ne grandit ni ne rétrécit */
+  padding: 20px 20px 20px 22px;
+  background: var(--gris-fond);
+}
+
+.contenu {
+  flex: 1;                   /* occupe tout l'espace restant */
+  padding: 20px 22px;
+}
+
+/* Titres de section (communs à la sidebar et au contenu) */
+h2 {
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #d9dfe1;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--turquoise);
+}
+
+.sidebar section,
+.contenu section { margin-bottom: 22px; }
+
+/* ===== SIDEBAR ===== */
+.competences li,
+.langues li {
+  display: flex;
+  justify-content: space-between;  /* nom à gauche, niveau à droite */
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 10px;
+}
+
+.competences span:first-child,
+.langues strong { font-weight: 700; }
+
+.etoiles { color: var(--turquoise); letter-spacing: 1px; font-size: 11px; }
+
+.langues span { font-size: 11px; }
+
+.puces li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.puces li::before {          /* petit carré turquoise */
+  content: "";
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--turquoise);
+}
+
+/* ===== CONTENU ===== */
+.contenu p { line-height: 1.25; text-align: justify; }
+.contenu p + p { margin-top: 2px; }
+
+/* Une ligne = intitulé à gauche / date à droite */
+.entree {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.entree h3 { font-size: 11px; font-weight: 700; }
+
+.entree .lieu {
+  margin-top: 1px;
+  font-size: 8.5px;
+  font-style: italic;
+  text-align: left;
+}
+
+.entree time {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--turquoise);
+  text-align: right;
+}
+
+/* ===== PIED DE PAGE ===== */
+.cv-footer {
+  display: flex;
+  flex-direction: column;    /* icônes au-dessus, texte en dessous */
+  align-items: center;
+  gap: 6px;
+  padding: 14px;
+  background: var(--turquoise);
+  color: #fff;
+}
+
+.reseaux { display: flex; gap: 16px; }
+
+.reseaux a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.reseaux a i { display: flex; }   /* aligne l'icône au centre du lien */
+
+.reseaux a:hover,
+.reseaux a:focus-visible { background: #fff; color: var(--turquoise); }
+
+.maj { font-size: 8px; font-style: italic; }
+
+/* ===== RESPONSIVE : on empile en dessous de 700px ===== */
+@media (max-width: 700px) {
+  .cv-header { flex-direction: column; gap: 14px; }
+  .cv-body   { flex-direction: column; }
+  .sidebar   { flex-basis: auto; }
+  .entree    { flex-direction: column; gap: 2px; }
+  .entree time { text-align: left; }
+}
