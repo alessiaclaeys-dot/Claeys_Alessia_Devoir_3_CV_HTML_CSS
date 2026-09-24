@@ -7,13 +7,17 @@
     <meta name="description" content="">
      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
     <title> CV - Claeys Alessia</title>
 </head>
 <body>
     <div class="cv">
         <header class="cv-header">
-          <img class="photo" src="./assets/images/Photo_CV_ Alessia.jpg" alt="Photo de Claeys Alessia">
+          <!-- Bloc de même largeur que la sidebar : la photo est centrée au-dessus d'elle -->
+          <div class="photo-bloc">
+            <a class="photo-lien" href="#photo-agrandie" aria-label="Agrandir la photo">
+              <img class="photo" src="./assets/images/Photo_CV_ Alessia.jpg" alt="Photo de Claeys Alessia">
+            </a>
+          </div>
           <div class="identite">
             <h1>Claeys Alessia</h1>
             <p class="metier">Développeur Web et Web Mobile</p>
@@ -25,6 +29,13 @@
             </ul>
           </div>
         </header>
+
+        <!-- Photo agrandie : s'ouvre au clic sur la photo, se ferme au clic n'importe où -->
+        <div class="lightbox" id="photo-agrandie">
+          <a href="#" aria-label="Fermer la photo">
+            <img src="./assets/images/Photo_CV_ Alessia.jpg" alt="Photo de Claeys Alessia agrandie">
+          </a>
+        </div>
             <div class="cv-body">
                <aside class="sidebar">
                 <section>
@@ -150,4 +161,6 @@
          </ul>   
          <p class="maj">Mis à jour le : <time datetime="2026-09-24">24/09/26</time></p>
         </footer>
-    </html>
+    </div>
+</body>
+</html>

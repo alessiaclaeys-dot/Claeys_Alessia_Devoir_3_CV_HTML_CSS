@@ -1,8 +1,7 @@
-/* ===== Police Raleway (Google Fonts) importée via @font-face =====
-   Fichiers à placer dans le dossier assets/fonts/ (à côté de style.css) */
+
 @font-face {
   font-family: "Raleway";
-  src: url("assets/fonts/Raleway-Regular.ttf") format("truetype");
+  src: url("../fonts/Raleway-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,7 +9,7 @@
 
 @font-face {
   font-family: "Raleway";
-  src: url("assets/fonts/Raleway-Bold.ttf") format("truetype");
+  src: url("../fonts/Raleway-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -18,7 +17,7 @@
 
 @font-face {
   font-family: "Raleway";
-  src: url("assets/fonts/Raleway-Italic.ttf") format("truetype");
+  src: url("../fonts/Raleway-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -61,13 +60,26 @@ h1, h2, h3, h4, h5, h6 { font-family: "Lato", Arial, sans-serif; }
 /* ===== EN-TÊTE ===== */
 .cv-header {
   display: flex;
-  justify-content: center;   /* centre le groupe photo + texte */
   align-items: center;       /* aligne verticalement */
-  gap: 40px;
-  padding: 20px;
+  padding: 20px 0;
   background: var(--turquoise);
   color: #fff;
 }
+
+/* Même largeur que .sidebar (26%) → la photo est centrée au-dessus de la colonne latérale */
+.photo-bloc {
+  flex: 0 0 26%;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-lien {
+  display: flex;
+  border-radius: 50%;
+  cursor: zoom-in;           /* curseur « loupe + » : on peut agrandir */
+}
+
+.photo-lien:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
 .photo {
   flex-shrink: 0;            /* la photo ne s'écrase jamais */
@@ -77,9 +89,15 @@ h1, h2, h3, h4, h5, h6 { font-family: "Lato", Arial, sans-serif; }
   border: 3px solid #fff;
   object-fit: cover;
   background: #cfe9eb;
+  transition: transform 0.2s;
 }
 
-.identite { text-align: center; }
+.photo-lien:hover .photo { transform: scale(1.06); }
+
+.identite {
+  flex: 1;                   /* occupe le reste de la largeur, texte centré */
+  text-align: center;
+}
 
 .identite h1 { font-size: 36px; font-weight: 700; }
 
@@ -237,9 +255,40 @@ h2 {
 
 .maj { font-size: 8px; font-style: italic; }
 
+/* ===== PHOTO AGRANDIE (visible quand l'URL se termine par #photo-agrandie) ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox:target { display: flex; }
+
+/* Le lien de fermeture couvre TOUT l'écran (pas seulement l'image) :
+   un clic à côté de la photo ferme donc la vue agrandie */
+.lightbox a {
+  display: flex;
+  justify-content: center;   /* centre l'image horizontalement */
+  align-items: center;       /* … et verticalement */
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  cursor: zoom-out;          /* curseur « loupe − » : clic pour refermer */
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
 /* ===== RESPONSIVE : on empile en dessous de 700px ===== */
 @media (max-width: 700px) {
   .cv-header { flex-direction: column; gap: 14px; }
+  .photo-bloc { flex-basis: auto; }
   .cv-body   { flex-direction: column; }
   .sidebar   { flex-basis: auto; }
   .entree    { flex-direction: column; gap: 2px; }
