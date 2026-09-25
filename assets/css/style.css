@@ -24,9 +24,10 @@
 
 /* ===== Variables & base ===== */
 :root {
-  --turquoise: #17a9b3;
-  --gris-fond: #eef2f3;
-  --texte: #222;
+  --turquoise: #17abb3;
+  --gris-fond: #f5f5f5;
+  --gris-clair: #e3e3e3;
+  --texte: #333333;
   --texte-doux: #555;
 }
 
@@ -36,9 +37,9 @@
 
 body {
   font-family: "Raleway", Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--texte);
-  background: #f4f4f4;
+  background: #f5f5f5;
 }
 
 ul { list-style: none; }
@@ -87,7 +88,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "Lato", Arial, sans-serif; }
   border-radius: 50%;
   border: 3px solid #fff;
   object-fit: cover;
-  background: #cfe9eb;
+  background: var(--gris-clair);
   transition: transform 0.2s;
 }
 
@@ -98,45 +99,50 @@ h1, h2, h3, h4, h5, h6 { font-family: "Lato", Arial, sans-serif; }
   text-align: center;
 }
 
-.identite h1 { font-size: 36px; font-weight: 700; }
+.identite h1 { font-size: 38px; font-weight: 700; }
 
 .metier {
   margin-top: 4px;
   font-family: "Lato", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
 }
 
 /* Contacts : liste flex qui passe à la ligne → 2 colonnes */
 .contacts {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
   justify-content: center;
   gap: 6px 30px;
-  max-width: 260px;
+  width: fit-content;
   margin: 12px auto 0;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .contacts li {
   display: flex;
   align-items: center;
   gap: 6px;
-  flex: 0 0 calc(50% - 15px);  /* 2 éléments par ligne */
 }
 
 .contacts i {
   display: flex;             /* supprime le décalage vertical de la police d'icônes */
-  font-size: 12px;
+  font-size: 13px;
+}
+
+/* Toutes les icônes (contacts + réseaux) : opacité réduite au survol */
+[class^="fi-"], [class*=" fi-"] {
+  transition: opacity 0.2s ease;
+}
+
+[class^="fi-"]:hover, [class*=" fi-"]:hover {
+  opacity: 0.6;
 }
 
 .contacts a {
   color: inherit;
   text-decoration: none;
 }
-
-.contacts a:hover,
-.contacts a:focus-visible { text-decoration: underline; }
 
 /* ===== CORPS ===== */
 .cv-body {
@@ -159,9 +165,9 @@ h1, h2, h3, h4, h5, h6 { font-family: "Lato", Arial, sans-serif; }
 h2 {
   margin-bottom: 8px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #d9dfe1;
-  font-size: 15px;
-  font-weight: 400;
+  border-bottom: 1px solid var(--gris-clair);
+  font-size: 16px;
+  font-weight: 700;
   color: var(--turquoise);
 }
 
@@ -175,22 +181,32 @@ h2 {
   justify-content: space-between;  /* nom à gauche, niveau à droite */
   align-items: center;
   margin-bottom: 6px;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .competences span:first-child,
-.langues strong { font-weight: 700; }
+.langues strong { font-weight: 700; font-size: 13px; }
 
-.etoiles { color: var(--turquoise); letter-spacing: 1px; font-size: 11px; }
+.etoiles {
+  color: var(--turquoise);
+  letter-spacing: 1px;
+  font-size: 16px;
+}
 
-.langues span { font-size: 11px; }
+.etoiles[data-rating="1"]::before { content: "★☆☆☆☆"; }
+.etoiles[data-rating="2"]::before { content: "★★☆☆☆"; }
+.etoiles[data-rating="3"]::before { content: "★★★☆☆"; }
+.etoiles[data-rating="4"]::before { content: "★★★★☆"; }
+.etoiles[data-rating="5"]::before { content: "★★★★★"; }
+
+.langues span { font-size: 12px; }
 
 .puces li {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 4px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .puces li::before {          /* petit carré turquoise */
@@ -212,20 +228,29 @@ h2 {
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 12px;
+  padding: 8px 10px;
+  border-left: 4px solid transparent;
+  border-radius: 2px;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
-.entree h3 { font-size: 11px; font-weight: 700; }
+.entree:hover {
+  background: var(--gris-fond);
+  border-left-color: var(--turquoise);
+}
+
+.entree h3 { font-size: 13px; font-weight: 700; }
 
 .entree .lieu {
   margin-top: 1px;
-  font-size: 8.5px;
+  font-size: 9.5px;
   font-style: italic;
   text-align: left;
 }
 
 .entree time {
   flex-shrink: 0;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--turquoise);
   text-align: right;
 }
@@ -260,7 +285,7 @@ h2 {
 .reseaux a:hover,
 .reseaux a:focus-visible { background: #fff; color: var(--turquoise); }
 
-.maj { font-size: 8px; font-style: italic; }
+.maj { font-size: 9px; font-style: italic; }
 
 /* ===== PHOTO AGRANDIE (visible quand l'URL se termine par #photo-agrandie) ===== */
 .lightbox {

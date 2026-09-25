@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="CV en ligne d'Alessia Claeys, développeuse Web et Web Mobile. Formations, expériences et compétences en HTML, CSS.">
      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Icônes Flaticon Uicons : sr = solid rounded, ss = solid straight, brands = logos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons/css/solid/rounded.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons/css/solid/straight.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons/css/brands/all.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title> CV - Claeys Alessia</title>
+    <title>Alessia Claeys – Développeuse Web et Web Mobile | CV en ligne</title>
+
+    <!-- Open Graph (aperçu du lien sur les réseaux sociaux, LinkedIn, messagerie...) -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Alessia Claeys – Développeuse Web et Web Mobile">
+    <meta property="og:description" content="CV en ligne d'Alessia Claeys, développeuse Web et Web Mobile à Mons. Formations, expériences et compétences en HTML, CSS, JavaScript et PHP.">
+    <meta property="og:image" content="./assets/images/Photo_CV_ Alessia.jpg">
+    <meta property="og:url" content="">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Alessia Claeys – Développeuse Web et Web Mobile">
+    <meta name="twitter:description" content="CV en ligne d'Alessia Claeys, développeuse Web et Web Mobile à Mons.">
+    <meta name="twitter:image" content="./assets/images/Photo_CV_ Alessia.jpg">
 </head>
 <body>
     <div class="cv">
@@ -26,8 +40,8 @@
             <h1>Claeys Alessia</h1>
             <p class="metier">Développeur Web et Web Mobile</p>
             <ul class="contacts">
-                <li><i class="fi fi-sr-envelope" aria-hidden="true"></i>Mail</li>
-                <li><i class="fi fi-ss-home" aria-hidden="true"></i>Adresse</li>
+                <li><i class="fi fi-sr-envelope" aria-hidden="true"></i><a href="mailto:alessia.claeys@gmail.com">Mail</a></li>
+                <li><i class="fi fi-ss-home" aria-hidden="true"></i><a href="https://www.google.com/maps/place/Mons" target="_blank" rel="noopener">Adresse</a></li>
                 <li><i class="fi fi-ss-phone-call" aria-hidden="true"></i><a href="tel:+32470123456">Téléphone</a></li>
                 <li><i class="fi fi-sr-car-alt" aria-hidden="true"></i>Permis B</li>
             </ul>
@@ -45,10 +59,10 @@
                 <section>
                     <h2>Compétences</h2>
                     <ul class="competences">
-                        <li><span>HTML</span><span class="etoiles" aria-label="4 sur 5"></span></li>
-                        <li><span>CSS</span><span class="etoiles" aria-label="4 sur 5"></span></li>
-                        <li><span>Javascript</span><span class="etoiles" aria-label="2 sur 5"></span></li>
-                        <li><span>PHP</span><span class="etoiles" aria-label="1 sur 5"></span></li>
+                        <li><span>HTML</span><span class="etoiles" data-rating="4" aria-label="4 sur 5"></span></li>
+                        <li><span>CSS</span><span class="etoiles" data-rating="4" aria-label="4 sur 5"></span></li>
+                        <li><span>Javascript</span><span class="etoiles" data-rating="2" aria-label="2 sur 5"></span></li>
+                        <li><span>PHP</span><span class="etoiles" data-rating="1" aria-label="1 sur 5"></span></li>
                     </ul>
                 </section>
                 <section>
@@ -62,18 +76,18 @@
                 <section>
                     <h2>Qualités</h2>
                     <ul class="puces">
-                        <li>"Esprit d'équipe"</li>
-                        <li>"Autonomie"</li>
-                        <li>"Organisation"</li>
-                        <li>"Créativité"</li>
+                        <li>Esprit d'équipe</li>
+                        <li>Autonomie</li>
+                        <li>Organisation</li>
+                        <li>Créativité</li>
                     </ul>
                 </section>
                 <section>
                     <h2>Centres d'intérêt</h2>
                     <ul class="puces">
-                       <li>"Lecture"</li>
-                       <li>"Jeux vidéo"</li>
-                       <li>"Création"</li> 
+                       <li>Lecture</li>
+                       <li>Jeux vidéo</li>
+                       <li>Création</li> 
                     </ul>
                 </section>
                </aside> 
@@ -159,7 +173,7 @@
             </div>
         <footer class="cv-footer">
          <ul class="reseaux">
-            <li><a href="#" aria-label="GitHub"><i class="fi fi-brands-github" aria-hidden="true"></i></a></li>
+            <li><a href="https://github.com/alessiaclaeys-dot" target="_blank" rel="noopener" aria-label="GitHub"><i class="fi fi-brands-github" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Discord"><i class="fi fi-brands-discord" aria-hidden="true"></i></a></li>
             <li><a href="#" aria-label="Instagram"><i class="fi fi-brands-instagram" aria-hidden="true"></i></a></li>
          </ul>   
