@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.exemple-cv-alessia.fr/sitemap.xml
